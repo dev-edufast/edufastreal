@@ -1,0 +1,392 @@
+/* Modern Learning App Aesthetic - Performance Optimized */
+
+.pageContainer {
+  position: relative;
+  overflow-x: hidden;
+  transform: translateZ(0);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--background);
+}
+
+/* Section - always visible, no opacity tricks */
+.section {
+  backface-visibility: hidden;
+}
+
+/* Reading Progress Indicator */
+.progressIndicator {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--z-nav-sticky);
+  height: 4px;
+  background-color: color-mix(in srgb, var(--muted) 50%, transparent);
+  backdrop-filter: blur(10px);
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+.progressIndicator .progress {
+  height: 100%;
+  border-radius: 0;
+  transition: all 0.2s ease-out;
+}
+
+/* Floating Education Icons Layer */
+.floatingEducationLayer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+/* Animated Background Elements */
+.backgroundElements {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: -1;
+  overflow: hidden;
+  transform: translateZ(0);
+}
+
+.floatingShape {
+  position: absolute;
+  width: clamp(80px, 10vw, 150px);
+  height: clamp(80px, 10vw, 150px);
+  background: linear-gradient(135deg, 
+    color-mix(in srgb, var(--primary) 25%, transparent), 
+    color-mix(in srgb, var(--accent) 20%, transparent),
+    color-mix(in srgb, var(--secondary) 15%, transparent)
+  );
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  animation: float 12s ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+  filter: blur(2px);
+  box-shadow: 0 8px 32px color-mix(in srgb, var(--primary) 15%, transparent),
+              0 4px 16px color-mix(in srgb, var(--accent) 10%, transparent);
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+.floatingShape:nth-child(1) {
+  top: 10%;
+  left: 5%;
+  animation-duration: calc(8s * 0.6);
+}
+
+.floatingShape:nth-child(2) {
+  top: 60%;
+  right: 10%;
+  animation-duration: calc(10s * 0.6);
+}
+
+.floatingShape:nth-child(3) {
+  bottom: 20%;
+  left: 15%;
+  animation-duration: calc(7s * 0.6);
+}
+
+.floatingShape:nth-child(4) {
+  top: 30%;
+  right: 20%;
+  animation-duration: calc(12s * 0.6);
+}
+
+/* Hide extra shapes on mobile for better performance */
+.desktopOnly {
+  display: block;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+    opacity: 0.3;
+    border-radius: 40% 60% 60% 40% / 40% 40% 60% 60%;
+  }
+  33% {
+    transform: translate3d(20px, -20px, 0) rotate(120deg) scale(1.1);
+    opacity: 0.2;
+    border-radius: 60% 40% 40% 60% / 60% 60% 40% 40%;
+  }
+  66% {
+    transform: translate3d(-15px, 15px, 0) rotate(240deg) scale(0.9);
+    opacity: 0.25;
+    border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
+  }
+}
+
+/* Recovery Section Styles */
+.recoverySection {
+  padding: var(--spacing-8) 0;
+  background-color: color-mix(in srgb, var(--warning) 8%, var(--background));
+  border-top: 1px solid color-mix(in srgb, var(--warning) 20%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--warning) 20%, transparent);
+  position: relative;
+}
+
+.recoverySection::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background-color: var(--warning);
+}
+
+.recoveryComponent {
+  margin: 0 auto;
+  animation: slideInFromTop 0.5s ease-out;
+}
+
+@keyframes slideInFromTop {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Programs Container Styling */
+.programsContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-6);
+}
+
+.programsHeader {
+  text-align: center;
+  margin-bottom: var(--spacing-12);
+}
+
+.programsTitle {
+  font-family: var(--font-family-heading);
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  font-weight: var(--font-weight-extrabold);
+  color: var(--foreground);
+  margin-bottom: var(--spacing-4);
+}
+
+.programsSubtitle {
+  font-size: 1.125rem;
+  color: var(--muted-foreground);
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.programsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  gap: var(--spacing-8);
+  margin-bottom: var(--spacing-8);
+}
+
+/* Hero CTA Section */
+.heroCtaSection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-4);
+  padding: var(--spacing-8) 0;
+  background-color: var(--surface);
+  border-radius: var(--radius-lg);
+  margin: var(--spacing-8) var(--spacing-6);
+  flex-wrap: wrap;
+}
+
+.brochureButton {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+}
+
+.ctaButtonRow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-4);
+  flex-wrap: wrap;
+}
+
+/* Mid-page and Final CTA Sections */
+.midPageCtaSection,
+.finalCtaSection {
+  padding: var(--spacing-16) var(--spacing-6);
+  text-align: center;
+  background-color: var(--surface);
+  border-radius: var(--radius-lg);
+  margin: var(--spacing-12) var(--spacing-6);
+  border: 1px solid var(--border);
+}
+
+.finalCtaSection {
+  background-color: var(--primary);
+  border-color: transparent;
+  color: var(--primary-foreground);
+}
+
+.finalCtaSection .ctaTitle,
+.finalCtaSection .ctaSubtitle {
+  color: var(--primary-foreground);
+}
+
+.ctaContainer {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.ctaTitle {
+  font-family: var(--font-family-heading);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: var(--font-weight-extrabold);
+  margin-bottom: var(--spacing-4);
+  background: linear-gradient(45deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.finalCtaSection .ctaTitle {
+  background: none;
+  -webkit-background-clip: unset;
+  -webkit-text-fill-color: unset;
+  background-clip: unset;
+}
+
+.ctaSubtitle {
+  font-size: 1.125rem;
+  color: var(--muted-foreground);
+  margin-bottom: var(--spacing-8);
+  line-height: 1.6;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .programsGrid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-6);
+  }
+}
+
+@media (max-width: 768px) {
+  .backgroundElements .floatingShape {
+    width: clamp(50px, 6vw, 80px);
+    height: clamp(50px, 6vw, 80px);
+    animation-duration: calc(6s * 0.6);
+  }
+  
+  .desktopOnly {
+    display: none;
+  }
+
+  .programsContainer {
+    padding: 0 var(--spacing-3);
+  }
+  
+  .programsGrid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-4);
+  }
+
+  .heroCtaSection {
+    margin: var(--spacing-4) var(--spacing-3);
+    padding: var(--spacing-4) 0;
+    flex-direction: column;
+  }
+
+  .ctaButtonRow {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .brochureButton {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .midPageCtaSection,
+  .finalCtaSection {
+    margin: var(--spacing-6) var(--spacing-3);
+    padding: var(--spacing-8) var(--spacing-4);
+  }
+
+  .ctaTitle {
+    font-size: 1.75rem;
+  }
+
+  .ctaSubtitle {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .floatingEducationLayer {
+    opacity: 0.5;
+  }
+  
+  .backgroundElements .floatingShape {
+    width: clamp(40px, 6vw, 60px);
+    height: clamp(40px, 6vw, 60px);
+  }
+}
+
+/* Accessibility - Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .floatingShape {
+    animation-duration: 0.01ms;
+    animation-iteration-count: 1;
+  }
+  
+  .backgroundElements {
+    display: none;
+  }
+}
+
+/* SEO Section Headers */
+.seoSectionHeader {
+  text-align: center;
+  margin-bottom: var(--spacing-8);
+  padding: var(--spacing-4) 0;
+}
+
+.seoSectionHeader h2 {
+  font-family: var(--font-family-heading);
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: var(--font-weight-extrabold);
+  color: var(--foreground);
+  margin-bottom: var(--spacing-3);
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.seoSectionHeader p {
+  font-size: 1.125rem;
+  color: var(--muted-foreground);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Print Styles */
+@media print {
+  .progressIndicator,
+  .backgroundElements {
+    display: none;
+  }
+}

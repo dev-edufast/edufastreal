@@ -1,0 +1,42 @@
+{
+  "name": "Edufast - Get Your Degree in 6 Months",
+  "short_name": "Edufast",
+  "description": "Professional education platform with fast-track degree programs",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "background_color": "#ffffff",
+  "theme_color": "#ff8000",
+  "categories": [
+    "education",
+    "learning",
+    "career"
+  ],
+  "icons": [
+    {
+      "src": "https://assets.floot.app/731b2326-1c69-4fc4-9e87-bdbe90c4ce17/7a71dee7-0486-4909-9219-524e0139b301.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "https://assets.floot.app/731b2326-1c69-4fc4-9e87-bdbe90c4ce17/7a71dee7-0486-4909-9219-524e0139b301.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "https://assets.floot.app/731b2326-1c69-4fc4-9e87-bdbe90c4ce17/02c0634c-415e-4761-915c-19fe26783a7d.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "https://assets.floot.app/731b2326-1c69-4fc4-9e87-bdbe90c4ce17/02c0634c-415e-4761-915c-19fe26783a7d.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

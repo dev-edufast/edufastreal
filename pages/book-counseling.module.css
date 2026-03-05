@@ -1,0 +1,242 @@
+.pageContainer {
+  padding: var(--spacing-12) var(--spacing-6);
+  background-color: var(--surface);
+  min-height: 100vh;
+}
+
+.contentGrid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: var(--spacing-12);
+  align-items: center;
+}
+
+.infoSection {
+  animation: slideInFromLeft 0.8s ease-out;
+}
+
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.infoIcon {
+  color: var(--primary);
+  margin-bottom: var(--spacing-4);
+}
+
+.infoSection h1 {
+  font-family: var(--font-family-heading);
+  font-size: 3rem;
+  font-weight: var(--font-weight-extrabold);
+  color: var(--foreground);
+  line-height: 1.2;
+  margin-bottom: var(--spacing-4);
+}
+
+.infoSubtitle {
+  font-size: 1.125rem;
+  color: var(--muted-foreground);
+  line-height: 1.7;
+  margin-bottom: var(--spacing-8);
+}
+
+.benefitsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.benefitsList li {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  font-size: 1rem;
+  color: var(--foreground);
+}
+
+.benefitsList li svg {
+  color: var(--success);
+  flex-shrink: 0;
+}
+
+.benefitsCTA {
+  margin-top: var(--spacing-8);
+  padding-top: var(--spacing-6);
+  border-top: 1px solid var(--border);
+}
+
+.formContainer {
+  background-color: var(--card);
+  padding: var(--spacing-8);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border);
+  animation: slideInFromRight 0.8s ease-out;
+}
+
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+}
+
+.formTitle {
+  font-family: var(--font-family-heading);
+  font-size: 1.75rem;
+  font-weight: var(--font-weight-bold);
+  text-align: center;
+  margin-bottom: var(--spacing-8);
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-6);
+}
+
+.gridSpan2 {
+  grid-column: span 2;
+}
+
+.inputWithIcon {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.inputWithIcon svg {
+  position: absolute;
+  left: var(--spacing-3);
+  color: var(--muted-foreground);
+  pointer-events: none;
+}
+
+.inputWithIcon input,
+.inputWithIcon textarea {
+  padding-left: calc(var(--spacing-3) * 2 + 16px);
+}
+
+.checkboxGroup {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-3);
+  margin-top: var(--spacing-2);
+}
+
+.checkboxItem {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+.checkboxItem label {
+  font-size: 0.9375rem;
+  color: var(--foreground);
+  cursor: pointer;
+}
+
+.submitButton {
+  width: 100%;
+  margin-top: var(--spacing-8);
+}
+
+.spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.successContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 60vh;
+  gap: var(--spacing-4);
+}
+
+.successIcon {
+  color: var(--success);
+}
+
+.successTitle {
+  font-family: var(--font-family-heading);
+  font-size: 2.5rem;
+  font-weight: var(--font-weight-extrabold);
+  color: var(--foreground);
+}
+
+.successMessage {
+  font-size: 1.125rem;
+  color: var(--muted-foreground);
+  max-width: 500px;
+  line-height: 1.6;
+}
+
+@media (max-width: 900px) {
+  .contentGrid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-8);
+  }
+
+  .infoSection {
+    text-align: center;
+  }
+
+  .benefitsList {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+}
+
+@media (max-width: 600px) {
+  .pageContainer {
+    padding: var(--spacing-8) var(--spacing-4);
+  }
+
+  .formContainer {
+    padding: var(--spacing-6);
+  }
+
+  .formGrid,
+  .checkboxGroup {
+    grid-template-columns: 1fr;
+  }
+
+  .gridSpan2 {
+    grid-column: span 1;
+  }
+}

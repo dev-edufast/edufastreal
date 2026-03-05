@@ -1,0 +1,121 @@
+.pageWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+  background-color: var(--background);
+  padding: var(--spacing-4);
+  font-family: var(--font-family-base);
+}
+
+.selectionContainer {
+  width: 100%;
+  max-width: 600px;
+  background-color: var(--card);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-12) var(--spacing-8);
+  box-shadow: var(--shadow-lg);
+  color: var(--foreground);
+  text-align: center;
+}
+
+.header {
+  margin-bottom: var(--spacing-8);
+}
+
+.logoLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-3);
+  text-decoration: none;
+  color: inherit;
+  margin-bottom: var(--spacing-4);
+  transition: transform var(--animation-duration-normal) ease;
+}
+
+.logoLink:hover {
+  transform: scale(1.02);
+}
+
+.logoIcon {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px color-mix(in srgb, var(--primary) 30%, transparent));
+}
+
+.title {
+  font-family: var(--font-family-heading);
+  font-weight: var(--font-weight-heading);
+  font-size: 3.5rem;
+  margin: 0;
+  color: var(--foreground);
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.1));
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  color: var(--muted-foreground);
+  margin: 0;
+  font-weight: var(--font-weight-bold);
+  line-height: 1.4;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-6);
+  flex-wrap: wrap;
+}
+
+.buttonLink {
+  text-decoration: none;
+  flex-grow: 1;
+  min-width: 200px;
+}
+
+.selectionButton {
+  width: 100%;
+  height: 4rem;
+  font-size: 1.25rem;
+  font-weight: var(--font-weight-extrabold);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: var(--shadow-md);
+  transition: transform var(--animation-duration-fast) ease, box-shadow var(--animation-duration-fast) ease;
+}
+
+.selectionButton:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+}
+
+.selectionButton:active {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow);
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .selectionContainer {
+    padding: var(--spacing-8) var(--spacing-6);
+  }
+
+  .buttonContainer {
+    flex-direction: column;
+    gap: var(--spacing-4);
+  }
+
+  .buttonLink {
+    width: 100%;
+  }
+
+  .title {
+    font-size: 2.75rem;
+  }
+
+  .subtitle {
+    font-size: 1.25rem;
+  }
+}

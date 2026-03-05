@@ -1,0 +1,132 @@
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: var(--spacing-12) var(--spacing-6);
+  background-color: var(--background);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: var(--spacing-8);
+}
+
+.header h1 {
+  font-family: var(--font-family-heading);
+  font-size: 2.5rem;
+  font-weight: var(--font-weight-extrabold);
+  color: var(--foreground);
+  margin-bottom: var(--spacing-2);
+}
+
+.header .highlight {
+  color: var(--primary);
+}
+
+.header p {
+  font-size: 1.125rem;
+  color: var(--muted-foreground);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.headerCta {
+  margin: var(--spacing-6) 0 var(--spacing-8);
+}
+
+.formWrapper {
+  background-color: var(--card);
+  padding: var(--spacing-8);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border);
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-6);
+}
+
+.gridSpan2 {
+  grid-column: span 2;
+}
+
+.submitContainer {
+  grid-column: span 2;
+  display: flex;
+  justify-content: center;
+  margin-top: var(--spacing-4);
+}
+
+.submitContainer > button {
+  width: 50%;
+  font-weight: var(--font-weight-extrabold);
+  letter-spacing: 1px;
+}
+
+.spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.successContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 60vh;
+  gap: var(--spacing-4);
+}
+
+.successIcon {
+  color: var(--success);
+}
+
+.successTitle {
+  font-family: var(--font-family-heading);
+  font-size: 2.5rem;
+  font-weight: var(--font-weight-extrabold);
+  color: var(--foreground);
+}
+
+.successMessage {
+  font-size: 1.125rem;
+  color: var(--muted-foreground);
+  max-width: 500px;
+  line-height: 1.6;
+}
+
+.successCta {
+  margin: var(--spacing-6) 0;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: var(--spacing-8) var(--spacing-4);
+  }
+
+  .header h1 {
+    font-size: 2rem;
+  }
+
+  .formGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .gridSpan2 {
+    grid-column: span 1;
+  }
+
+  .submitContainer > button {
+    width: 100%;
+  }
+}

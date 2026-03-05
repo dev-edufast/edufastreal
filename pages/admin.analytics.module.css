@@ -1,0 +1,56 @@
+.tabsContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.tabContent {
+  padding-top: var(--spacing-8);
+  flex-grow: 1;
+}
+
+.titleWrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+}
+
+.titleIcon {
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+.headerActions {
+  display: flex;
+  gap: var(--spacing-4);
+  margin-bottom: var(--spacing-6);
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.overviewContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8);
+}
+
+.funnelSection {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .headerActions {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .headerActions > * {
+    width: 100%;
+  }
+  
+  .funnelSection {
+    max-width: 100%;
+  }
+}

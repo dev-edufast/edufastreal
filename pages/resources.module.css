@@ -1,0 +1,49 @@
+.pageContainer {
+  padding: var(--spacing-12) var(--spacing-8);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: var(--spacing-8);
+  justify-items: center;
+}
+
+.error,
+.empty {
+  text-align: center;
+  padding: var(--spacing-12);
+  background-color: var(--surface);
+  border-radius: var(--radius-lg);
+  color: var(--muted-foreground);
+}
+
+.error p {
+  color: var(--error);
+  font-weight: var(--font-weight-bold);
+}
+
+.skeletonCard {
+  background-color: var(--card);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  width: 100%;
+  max-width: 400px;
+}
+
+.skeletonContent {
+  padding: var(--spacing-6);
+}
+
+@media (max-width: 768px) {
+  .pageContainer {
+    padding: var(--spacing-8) var(--spacing-4);
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

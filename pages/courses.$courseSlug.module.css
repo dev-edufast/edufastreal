@@ -1,0 +1,318 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--spacing-4) var(--spacing-4) var(--spacing-16);
+}
+
+.breadcrumbWrapper {
+  margin-bottom: var(--spacing-6);
+}
+
+.breadcrumbSkeleton {
+  margin-bottom: var(--spacing-6);
+}
+
+.heroSkeleton {
+  height: 200px;
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--spacing-8);
+}
+
+.contentSkeleton {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+}
+
+.errorContainer {
+  text-align: center;
+  padding: var(--spacing-16) var(--spacing-4);
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  margin: var(--spacing-8) auto;
+  max-width: 600px;
+}
+
+.errorContainer h2 {
+  font-family: var(--font-family-heading);
+  color: var(--foreground);
+  margin-bottom: var(--spacing-4);
+}
+
+.errorContainer p {
+  color: var(--muted-foreground);
+  margin-bottom: var(--spacing-6);
+}
+
+.hero {
+  background: var(--card);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-8);
+  margin-bottom: var(--spacing-8);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+}
+
+.heroContent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.heroHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  margin-bottom: var(--spacing-4);
+}
+
+.abbreviation {
+  font-weight: var(--font-weight-bold);
+  color: var(--primary);
+  font-size: 1rem;
+}
+
+.title {
+  font-family: var(--font-family-heading);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: var(--font-weight-extrabold);
+  margin: 0 0 var(--spacing-4);
+  color: var(--foreground);
+  line-height: 1.2;
+}
+
+.universityLink {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  color: var(--muted-foreground);
+  text-decoration: none;
+  font-size: 1.125rem;
+  transition: color var(--animation-duration-fast) ease;
+}
+
+.universityLink:hover {
+  color: var(--primary);
+}
+
+.keyInfo {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--spacing-4);
+  margin-bottom: var(--spacing-8);
+}
+
+.infoCard {
+  background: var(--card);
+  padding: var(--spacing-4);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-4);
+}
+
+.infoCardHighlight {
+  border-color: var(--success);
+  background: color-mix(in srgb, var(--success) 5%, var(--card));
+}
+
+.infoIconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  color: var(--primary);
+}
+
+.infoCardHighlight .infoIconWrapper {
+  background: color-mix(in srgb, var(--success) 15%, transparent);
+  color: var(--success);
+}
+
+.infoContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.infoLabel {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: 2px;
+}
+
+.infoValue {
+  font-weight: var(--font-weight-bold);
+  color: var(--foreground);
+  font-size: 1rem;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: var(--spacing-8);
+  align-items: start;
+}
+
+.mainContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8);
+}
+
+.contentSection {
+  background: var(--card);
+  padding: var(--spacing-6);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+}
+
+.contentSection h3 {
+  font-family: var(--font-family-heading);
+  font-size: 1.5rem;
+  margin: 0 0 var(--spacing-4);
+  color: var(--foreground);
+}
+
+.descriptionText {
+  color: var(--muted-foreground);
+  line-height: 1.6;
+}
+
+.eligibilityBox {
+  display: flex;
+  gap: var(--spacing-4);
+  align-items: flex-start;
+  background: var(--surface);
+  padding: var(--spacing-4);
+  border-radius: var(--radius-md);
+}
+
+.checkIconLarge {
+  color: var(--primary);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.eligibilityBox p {
+  margin: 0;
+  color: var(--foreground);
+  line-height: 1.5;
+}
+
+.outcomesList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: var(--spacing-4);
+}
+
+.outcomesList li {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  color: var(--foreground);
+  background: var(--surface);
+  padding: var(--spacing-3) var(--spacing-4);
+  border-radius: var(--radius-md);
+}
+
+.outcomeIcon {
+  color: var(--secondary);
+  flex-shrink: 0;
+}
+
+.specializationsGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-2);
+}
+
+.specBadge {
+  font-size: 0.875rem;
+  padding: var(--spacing-2) var(--spacing-3);
+}
+
+.ctaSection {
+  margin-top: var(--spacing-4);
+}
+
+.ctaBox {
+  background: linear-gradient(135deg, var(--card), var(--surface));
+  padding: var(--spacing-8);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  text-align: center;
+  box-shadow: var(--shadow-md);
+}
+
+.ctaBox h2 {
+  font-family: var(--font-family-heading);
+  font-size: 1.75rem;
+  margin: 0 0 var(--spacing-2);
+  color: var(--foreground);
+}
+
+.ctaBox p {
+  color: var(--muted-foreground);
+  margin: 0 0 var(--spacing-6);
+  font-size: 1.125rem;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+  position: sticky;
+  top: var(--spacing-6);
+}
+
+.relatedSection h3 {
+  font-family: var(--font-family-heading);
+  font-size: 1.25rem;
+  margin: 0 0 var(--spacing-4);
+  color: var(--foreground);
+}
+
+.relatedGrid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+@media (max-width: 768px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+  
+  .sidebar {
+    position: static;
+  }
+
+  .outcomesList {
+    grid-template-columns: 1fr;
+  }
+  
+  .hero {
+    padding: var(--spacing-6) var(--spacing-4);
+  }
+}

@@ -1,0 +1,74 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--spacing-6);
+  min-height: calc(100vh - 64px); /* Adjust based on header height */
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+}
+
+.backButton {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  color: var(--muted-foreground);
+  font-size: 0.875rem;
+  font-weight: var(--font-weight-medium);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: color var(--animation-duration-fast) ease;
+}
+
+.backButton:hover {
+  color: var(--primary);
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.formWrapper {
+  width: 100%;
+  max-width: 800px;
+}
+
+.errorContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  text-align: center;
+  gap: var(--spacing-4);
+}
+
+.errorContainer h1 {
+  font-family: var(--font-family-heading);
+  color: var(--error);
+  margin: 0;
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: var(--font-weight-bold);
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: var(--spacing-4);
+  }
+}

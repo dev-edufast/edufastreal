@@ -1,0 +1,181 @@
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: var(--spacing-12) var(--spacing-6);
+  background-color: var(--background);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: var(--spacing-8);
+}
+
+.header h1 {
+  font-family: var(--font-family-heading);
+  font-size: 2.5rem;
+  font-weight: var(--font-weight-extrabold);
+  color: var(--foreground);
+  margin-bottom: var(--spacing-2);
+}
+
+.header .highlight {
+  color: hsl(215 80% 65%); /* Matching the blue from the design */
+}
+
+.header p {
+  font-size: 1.125rem;
+  color: var(--muted-foreground);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.formWrapper {
+  background-color: var(--card);
+  padding: var(--spacing-8);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border);
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-6);
+}
+
+.gridSpan2 {
+  grid-column: span 2;
+}
+
+.phoneInputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.phonePrefix {
+  position: absolute;
+  left: var(--spacing-3);
+  color: var(--muted-foreground);
+  font-size: 1rem;
+  pointer-events: none;
+}
+
+.phoneInput {
+  padding-left: calc(var(--spacing-3) + 2.5rem);
+}
+
+.datePickerTrigger {
+  width: 100%;
+  justify-content: flex-start;
+  font-weight: var(--font-weight-normal);
+  color: var(--foreground);
+}
+
+.datePickerTrigger span {
+  color: var(--muted-foreground);
+}
+
+.timeSlotGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: var(--spacing-3);
+}
+
+.timeSlotButton {
+  width: 100%;
+  font-weight: var(--font-weight-normal);
+}
+
+.submitContainer {
+  grid-column: span 2;
+  display: flex;
+  justify-content: center;
+  margin-top: var(--spacing-4);
+}
+
+.submitContainer > button {
+  width: 50%;
+  font-weight: var(--font-weight-extrabold);
+  letter-spacing: 1px;
+  background-color: hsl(215 80% 65%);
+  border-color: hsl(215 80% 65%);
+}
+
+.submitContainer > button:hover {
+  background-color: hsl(215 80% 60%);
+  border-color: hsl(215 80% 60%);
+}
+
+.spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.successContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 60vh;
+  gap: var(--spacing-4);
+}
+
+.successIcon {
+  color: var(--success);
+}
+
+.successTitle {
+  font-family: var(--font-family-heading);
+  font-size: 2.5rem;
+  font-weight: var(--font-weight-extrabold);
+  color: var(--foreground);
+}
+
+.successMessage {
+  font-size: 1.125rem;
+  color: var(--muted-foreground);
+  max-width: 500px;
+  line-height: 1.6;
+}
+
+.errorMessage {
+  padding: var(--spacing-3);
+  background-color: color-mix(in srgb, var(--error) 10%, transparent);
+  color: var(--error);
+  border: 1px solid color-mix(in srgb, var(--error) 30%, transparent);
+  border-radius: var(--radius);
+  font-size: 0.875rem;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: var(--spacing-8) var(--spacing-4);
+  }
+
+  .header h1 {
+    font-size: 2rem;
+  }
+
+  .formGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .gridSpan2 {
+    grid-column: span 1;
+  }
+
+  .submitContainer > button {
+    width: 100%;
+  }
+}

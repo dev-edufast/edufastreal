@@ -1,0 +1,328 @@
+.container {
+  max-width: 1200px;
+  margin: var(--spacing-8) auto;
+  padding: 0 var(--spacing-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8);
+}
+
+.header {
+  text-align: center;
+  padding-bottom: var(--spacing-6);
+  border-bottom: 1px solid var(--border);
+}
+
+.courseTitle {
+  font-family: var(--font-family-heading);
+  font-size: 2.5rem;
+  font-weight: var(--font-weight-extrabold);
+  color: var(--foreground);
+  margin: 0 0 var(--spacing-2);
+}
+
+.courseDescription {
+  font-size: 1.125rem;
+  color: var(--muted-foreground);
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.mainContent {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: var(--spacing-8);
+}
+
+.accessSection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.driveAccessCard {
+  background-color: var(--card);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-8);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+}
+
+.driveAccessHeader {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-4);
+}
+
+.driveIcon {
+  color: var(--primary);
+  flex-shrink: 0;
+  margin-top: var(--spacing-1);
+}
+
+.driveAccessHeader h2 {
+  font-size: 1.75rem;
+  font-weight: var(--font-weight-bold);
+  margin: 0 0 var(--spacing-2);
+  color: var(--foreground);
+}
+
+.driveAccessHeader p {
+  font-size: 1rem;
+  color: var(--muted-foreground);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.driveAccessButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-4) var(--spacing-6);
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  border-radius: var(--radius);
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-family-base);
+  font-weight: var(--font-weight-bold);
+  font-size: 1.125rem;
+  transition: background-color var(--animation-duration-normal);
+  align-self: flex-start;
+}
+
+.driveAccessButton:hover {
+  background-color: var(--primary-hover);
+}
+
+.driveAccessLocked {
+  padding: var(--spacing-4);
+  background-color: var(--surface);
+  border-radius: var(--radius);
+  border: 1px dashed var(--border);
+}
+
+.driveAccessLocked p {
+  color: var(--muted-foreground);
+  margin: 0;
+  text-align: center;
+  font-style: italic;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+}
+
+.purchaseCard,
+.progressCard {
+  background-color: var(--card);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-6);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.purchaseCard h3,
+.progressCard h3 {
+  font-size: 1.25rem;
+  font-weight: var(--font-weight-bold);
+  margin: 0;
+}
+
+.purchaseCard p {
+  color: var(--muted-foreground);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.progressHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+.progressInfo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.progressInfo span {
+  font-size: 0.875rem;
+  font-weight: var(--font-weight-medium);
+  color: var(--muted-foreground);
+}
+
+.progressInfo progress {
+  width: 100%;
+  height: 8px;
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  border: none;
+}
+
+.progressInfo progress::-webkit-progress-bar {
+  background-color: var(--surface);
+}
+
+.progressInfo progress::-webkit-progress-value {
+  background-color: var(--primary);
+  transition: width 0.3s ease;
+}
+
+.statusInfo {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  font-size: 0.875rem;
+  color: var(--info);
+  background-color: color-mix(in srgb, var(--info) 10%, transparent);
+  padding: var(--spacing-2) var(--spacing-3);
+  border-radius: var(--radius);
+}
+
+.driveLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-3);
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  border-radius: var(--radius);
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-family-base);
+  font-weight: var(--font-weight-bold);
+  transition: background-color var(--animation-duration-normal);
+  width: 100%;
+}
+
+.driveLink:hover {
+  background-color: var(--primary-hover);
+}
+
+.materialsSection {
+  margin-top: var(--spacing-8);
+}
+
+.lockedContent {
+  text-align: center;
+  padding: var(--spacing-12) var(--spacing-6);
+  background-color: var(--surface);
+  border-radius: var(--radius-lg);
+  border: 1px dashed var(--border);
+}
+
+.lockedIcon {
+  color: var(--primary);
+  margin-bottom: var(--spacing-4);
+}
+
+.lockedContent h3 {
+  font-size: 1.5rem;
+  font-weight: var(--font-weight-bold);
+  margin: 0 0 var(--spacing-2);
+}
+
+.lockedContent p {
+  color: var(--muted-foreground);
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.errorContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--spacing-16) var(--spacing-6);
+  min-height: 50vh;
+}
+
+.errorIcon {
+  color: var(--error);
+  margin-bottom: var(--spacing-4);
+}
+
+.notFoundIcon {
+  color: var(--muted-foreground);
+  margin-bottom: var(--spacing-4);
+}
+
+.errorTitle {
+  font-family: var(--font-family-heading);
+  font-size: 2rem;
+  margin: 0 0 var(--spacing-2);
+}
+
+.errorMessage {
+  color: var(--muted-foreground);
+  margin-bottom: var(--spacing-6);
+}
+
+.errorActions {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-4);
+}
+
+.backButton {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-3) var(--spacing-6);
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  text-decoration: none;
+  border-radius: var(--radius);
+  font-weight: var(--font-weight-bold);
+  transition: background-color var(--animation-duration-normal);
+}
+
+.backButton:hover {
+  background-color: var(--primary-hover);
+}
+
+@media (max-width: 992px) {
+  .mainContent {
+    grid-template-columns: 1fr;
+  }
+  .sidebar {
+    order: -1;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 var(--spacing-4);
+    margin: var(--spacing-6) auto;
+  }
+  .courseTitle {
+    font-size: 2rem;
+  }
+  .courseDescription {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 var(--spacing-2);
+    margin: var(--spacing-4) auto;
+  }
+  .courseTitle {
+    font-size: 1.75rem;
+  }
+}

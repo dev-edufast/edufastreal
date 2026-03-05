@@ -1,0 +1,130 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8);
+  padding: var(--spacing-8);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: var(--spacing-4);
+}
+
+.title {
+  font-family: var(--font-family-heading);
+  font-size: 2.25rem;
+  font-weight: var(--font-weight-extrabold);
+  color: var(--foreground);
+  margin: 0;
+}
+
+.subtitle {
+  font-size: 1.125rem;
+  color: var(--muted-foreground);
+  margin-top: var(--spacing-2);
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--spacing-6);
+}
+
+.statCard {
+  background-color: var(--card);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-6);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-4);
+  box-shadow: var(--shadow);
+  transition: transform var(--animation-duration-normal) ease, box-shadow var(--animation-duration-normal) ease;
+}
+
+.statCard:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.statIcon {
+  flex-shrink: 0;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.statContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.statTitle {
+  font-size: 1rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--muted-foreground);
+  margin: 0;
+}
+
+.statValue {
+  font-size: 2rem;
+  font-weight: var(--font-weight-extrabold);
+  color: var(--foreground);
+  margin: 0;
+  line-height: 1.2;
+}
+
+/* Card specific colors */
+.totalLeadsCard .statIcon {
+  background-color: color-mix(in srgb, var(--info) 15%, transparent);
+  color: var(--info);
+}
+
+.newLeadsCard .statIcon {
+  background-color: color-mix(in srgb, var(--success) 15%, transparent);
+  color: var(--success);
+}
+
+.hotLeadsCard .statIcon {
+  background-color: color-mix(in srgb, var(--primary) 15%, transparent);
+  color: var(--primary);
+}
+
+.convertedLeadsCard .statIcon {
+  background-color: color-mix(in srgb, var(--secondary) 15%, transparent);
+  color: var(--secondary);
+}
+
+.mainContent {
+  background-color: var(--card);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-6);
+  box-shadow: var(--shadow);
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 1024px) {
+  .statsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding: var(--spacing-4);
+  }
+  .statsGrid {
+    grid-template-columns: 1fr;
+  }
+  .title {
+    font-size: 1.75rem;
+  }
+  .subtitle {
+    font-size: 1rem;
+  }
+}

@@ -1,0 +1,7 @@
+# Allow all user agents to crawl the site
+User-agent: *
+Disallow: /admin
+Disallow: /student-dashboard
+
+# Point to the dynamic sitemap
+Sitemap: https://www.edufast.in/_api/sitemap

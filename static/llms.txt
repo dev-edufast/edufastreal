@@ -1,0 +1,36 @@
+# llms.txt
+
+# Edufast - Fast Track Education Platform
+# Accelerated degree programs for working professionals
+
+# Crawler Directives
+User-Agent: *
+
+# Allowed paths
+Allow: /programs
+Allow: /about
+Allow: /faculty
+Allow: /success-stories
+Allow: /resources
+Allow: /faqs
+Allow: /how-it-works
+Allow: /contact
+
+# Restricted paths
+Disallow: /admin
+Disallow: /student-dashboard
+Disallow: /login
+Disallow: /admin-login
+Disallow: /apply-now
+Disallow: /register
+
+# Usage Policy
+# Public educational content may be referenced.
+# Personal data and user-generated content must not be used.
+# Respect user privacy per our privacy policy.
+
+# Sitemap
+Sitemap: https://edufast.in/sitemap.xml
+
+# Contact
+# AI/LLM usage inquiries: legal@edufast.in

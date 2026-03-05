@@ -1,0 +1,294 @@
+.dashboardContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--spacing-8) var(--spacing-6);
+}
+
+.welcomeHeader {
+  margin-bottom: var(--spacing-8);
+  text-align: left;
+}
+
+.welcomeTitle {
+  font-family: var(--font-family-heading);
+  font-size: 2.5rem;
+  font-weight: var(--font-weight-extrabold);
+  color: var(--foreground);
+  margin: 0 0 var(--spacing-2);
+}
+
+.welcomeSubtitle {
+  font-size: 1.125rem;
+  color: var(--muted-foreground);
+  margin: 0;
+}
+
+.dashboardGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto;
+  gap: var(--spacing-6);
+  grid-template-areas:
+    "programs programs announcements"
+    "elearning elearning deadlines"
+    "chart chart actions";
+}
+
+.card {
+  background-color: var(--card);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-6);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  transition: all 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  margin-bottom: var(--spacing-4);
+  color: var(--foreground);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: var(--spacing-3);
+}
+
+.cardTitle {
+  font-size: 1.25rem;
+  font-weight: var(--font-weight-bold);
+  margin: 0;
+}
+
+.errorCard,
+.errorState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: var(--spacing-3);
+  color: var(--error);
+  padding: var(--spacing-8);
+}
+
+.emptyState {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: var(--spacing-4);
+  color: var(--muted-foreground);
+  padding: var(--spacing-6) 0;
+}
+
+/* Specific Card Styles */
+.programsCard {
+  grid-area: programs;
+}
+
+.announcementsCard {
+  grid-area: announcements;
+}
+
+.deadlinesCard {
+  grid-area: deadlines;
+}
+
+.chartCard {
+  grid-area: chart;
+}
+
+.actionsCard {
+  grid-area: actions;
+}
+
+.elearningCard {
+  grid-area: elearning;
+}
+
+/* Enrolled Programs */
+.programList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+}
+
+.programItem, .programItemSkeleton {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+.programInfo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.programTitle {
+  font-size: 1.1rem;
+  font-weight: var(--font-weight-bold);
+  margin: 0;
+}
+
+.programMeta {
+  display: flex;
+  gap: var(--spacing-2);
+  align-items: center;
+}
+
+.progressWrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+}
+
+.progressLabel {
+  font-size: 0.875rem;
+  color: var(--muted-foreground);
+  font-weight: var(--font-weight-medium);
+  white-space: nowrap;
+}
+
+/* Announcements */
+.announcementList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.announcementItem, .announcementItemSkeleton {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-4);
+}
+
+.announcementIcon .badge {
+  width: 2.25rem;
+  height: 2.25rem;
+  font-size: 1rem;
+}
+
+.announcementContent {
+  flex-grow: 1;
+}
+
+.announcementTitle {
+  font-size: 1rem;
+  font-weight: var(--font-weight-bold);
+  margin: 0 0 var(--spacing-1);
+  color: var(--foreground);
+}
+
+.announcementDate {
+  font-size: 0.875rem;
+  color: var(--muted-foreground);
+  margin: 0;
+}
+
+/* Deadlines */
+.deadlineList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.deadlineItem, .deadlineItemSkeleton {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--spacing-4);
+}
+
+.deadlineInfo {
+  flex-grow: 1;
+}
+
+.deadlineTitle {
+  font-size: 1rem;
+  font-weight: var(--font-weight-bold);
+  margin: 0 0 var(--spacing-1);
+}
+
+.deadlineProgram {
+  font-size: 0.875rem;
+  color: var(--muted-foreground);
+  margin: 0;
+}
+
+.deadlineDate {
+  font-size: 0.875rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--foreground);
+  white-space: nowrap;
+}
+
+.dateWarning {
+  color: var(--warning);
+}
+
+.dateUrgent {
+  color: var(--error);
+}
+
+/* Progress Chart */
+.chartContainer {
+  height: 250px;
+  width: 100%;
+}
+
+/* Quick Actions */
+.actionButtons {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-3);
+}
+
+.actionButtons a {
+  justify-content: flex-start;
+}
+
+
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .dashboardGrid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "programs programs"
+      "elearning elearning"
+      "announcements deadlines"
+      "chart chart"
+      "actions actions";
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboardGrid {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "programs"
+      "elearning"
+      "announcements"
+      "deadlines"
+      "chart"
+      "actions";
+  }
+
+  .welcomeTitle {
+    font-size: 2rem;
+  }
+
+  .welcomeSubtitle {
+    font-size: 1rem;
+  }
+}
