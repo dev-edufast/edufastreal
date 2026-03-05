@@ -1,9 +1,9 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 
-export default function AboutLayout({ children }: { children: React.ReactNode }) {
+export default function FAQsLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="about-layout">
+    <div className="faqs-layout">
       {children || <Outlet />}
     </div>
   );
