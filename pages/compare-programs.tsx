@@ -1,6 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import { SectionHeader } from '../components/SectionHeader';
+import SectionHeader from '../components/SectionHeader';
 import { ProgramComparison } from '../components/ProgramComparison';
 import { StrongCTA } from '../components/StrongCTA';
 import styles from './compare-programs.module.css';

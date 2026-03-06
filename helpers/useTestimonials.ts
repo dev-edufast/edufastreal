@@ -5,6 +5,9 @@ export type Testimonial = {
   name: string;
   role: string;
   quote: string;
+  author?: string;
+  reviewBody?: string;
+  ratingValue?: number;
 };
 
 export function useTestimonials() {
@@ -44,7 +47,7 @@ export function useTestimonials() {
     };
   }, []);
 
-  return { data: testimonials, testimonials, isLoading, error };
+  return { data: testimonials, testimonials, isLoading, isFetching: isLoading, error };
 }
 
 export default useTestimonials;

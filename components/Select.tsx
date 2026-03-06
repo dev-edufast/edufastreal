@@ -21,9 +21,10 @@ interface SelectProps {
   value?: string;
   onValueChange?: (value: string) => void;
   children: React.ReactNode;
+  disabled?: boolean;
 }
 
-export function Select({ value = "", onValueChange = () => {}, children }: SelectProps) {
+export function Select({ value = "", onValueChange = () => {}, children, disabled = false }: SelectProps) {
   const [open, setOpen] = useState(false);
   const [internalValue, setInternalValue] = useState(value);
 

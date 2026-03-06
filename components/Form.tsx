@@ -172,6 +172,20 @@ export function FormMessage({ children, className = "" }: FormMessageProps) {
   );
 }
 
+interface FormDescriptionProps {
+  children?: React.ReactNode;
+  className?: string;
+}
+
+export function FormDescription({ children, className = "" }: FormDescriptionProps) {
+  if (!children) return null;
+  return (
+    <p className={`text-sm text-gray-500 ${className}`}>
+      {children}
+    </p>
+  );
+}
+
 interface UseFormReturn {
   register: (name: string) => {
     name: string;
@@ -188,6 +202,7 @@ interface UseFormReturn {
   setValues: (updater: ((prev: Record<string, any>) => Record<string, any>) | Record<string, any>) => void;
   watch: (name: string) => any;
   values: Record<string, any>;
+  validateField: (name: string) => void;
 }
 
 interface UseFormOptions {
@@ -236,6 +251,15 @@ export function useForm(options: UseFormOptions = {}): UseFormReturn {
     [values]
   );
 
+  const validateField = useCallback((name: string) => {
+    // Clear error for this field when it's touched/updated
+    setErrors((prev) => {
+      const newErrors = { ...prev };
+      delete newErrors[name];
+      return newErrors;
+    });
+  }, []);
+
   return {
     register,
     handleSubmit,
@@ -247,6 +271,7 @@ export function useForm(options: UseFormOptions = {}): UseFormReturn {
     setValues: setValuesUpdater,
     watch,
     values,
+    validateField,
   };
 }
 

@@ -26,7 +26,7 @@ import {
 } from 'lucide-react';
 import { Button } from '../components/Button';
 import { Badge } from '../components/Badge';
-import { SectionHeader } from '../components/SectionHeader';
+import SectionHeader from '../components/SectionHeader';
 import { Skeleton } from '../components/Skeleton';
 import { CoursePreviewModal } from '../components/CoursePreviewModal';
 import { CoursePurchaseButton } from '../components/CoursePurchaseButton';

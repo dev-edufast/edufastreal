@@ -5,24 +5,25 @@ import { useUniversitiesFilter } from '../helpers/useUniversitiesFilter';
 import { UniversityCard } from '../components/UniversityCard';
 import { Skeleton } from '../components/Skeleton';
 import { UniversitiesFilterBar } from '../components/UniversitiesFilterBar';
-import { ActiveFilterChips } from '../components/ActiveFilterChips';
 import { Building2, GraduationCap, LibraryBig, Star } from 'lucide-react';
 import styles from './universities.module.css';
 
 export default function UniversitiesPage() {
-  const { data: universities, isFetching } = useUniversitiesList();
+  const { universities, isLoading } = useUniversitiesList();
   
   const {
     filters,
-    updateFilter,
-    clearFilter,
-    clearAllFilters,
+    setSearchQuery,
+    setSelectedLocation,
+    setSelectedProgram,
+    clearFilters,
     filteredUniversities,
-    hasActiveFilters,
+    locations,
+    programs,
   } = useUniversitiesFilter(universities);
 
   const totalUniversities = universities?.length || 0;
-  const totalCourses = universities?.reduce((acc, uni) => acc + uni.courseCount, 0) || 0;
+  const totalCourses = universities?.reduce((acc, uni) => acc + (uni.programs?.length || 0), 0) || 0;
   
   const featuredUniversities = filteredUniversities.filter(u => u.isFeatured);
   const regularUniversities = filteredUniversities.filter(u => !u.isFeatured);
@@ -43,7 +44,7 @@ export default function UniversitiesPage() {
               We partner with prestigious, fully accredited institutions worldwide to bring you accelerated degree programs that are recognized globally.
             </p>
             
-            {!isFetching && totalUniversities > 0 && (
+            {!isLoading && totalUniversities > 0 && (
               <div className={styles.statsContainer}>
                 <div className={styles.statCard}>
                   <Building2 size={24} className={styles.statIcon} />
@@ -62,22 +63,19 @@ export default function UniversitiesPage() {
 
         <div className={styles.stickyFilterContainer}>
           <UniversitiesFilterBar 
-            filters={filters}
-            onFilterChange={updateFilter}
-            resultCount={filteredUniversities.length}
-            totalCount={totalUniversities}
+            searchQuery={filters.searchQuery}
+            onSearchChange={setSearchQuery}
+            selectedLocation={filters.selectedLocation}
+            onLocationChange={setSelectedLocation}
+            selectedProgram={filters.selectedProgram}
+            onProgramChange={setSelectedProgram}
+            locations={locations}
+            programs={programs}
           />
         </div>
 
         <section className={styles.main}>
-          <ActiveFilterChips 
-            filters={filters}
-            onClearFilter={clearFilter}
-            onClearAll={clearAllFilters}
-            hasActiveFilters={hasActiveFilters}
-          />
-
-          {isFetching ? (
+          {isLoading ? (
             <div className={styles.grid}>
               {[1, 2, 3, 4, 5, 6].map((i) => (
                 <div key={i} className={styles.skeletonCard}>

@@ -1,8 +1,12 @@
 export type Programs = {
   id: number;
   name: string;
+  title?: string;
   slug?: string | null;
   description?: string | null;
+  category?: string | null;
+  eligibility?: string | null;
+  careerOutcomes?: string[] | null;
   createdAt?: string | Date | null;
   updatedAt?: string | Date | null;
 };
@@ -25,5 +29,20 @@ export type Leads = {
   createdAt?: string | Date | null;
   updatedAt?: string | Date | null;
 };
+
+// Course level enum type
+export type CourseLevel = "beginner" | "intermediate" | "advanced" | "all";
+
+// Degree category type
+export type DegreeCategory = "Undergraduate" | "Postgraduate" | "Diploma" | "Certificate" | "Professional";
+
+// Degree category array values for select options
+export const DegreeCategoryArrayValues = [
+  "Undergraduate",
+  "Postgraduate", 
+  "Diploma",
+  "Certificate",
+  "Professional"
+] as const;
 
 export default {};

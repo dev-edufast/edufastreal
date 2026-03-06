@@ -91,4 +91,6 @@ export function useAuth() {
   return context;
 }
 
+export const AUTH_QUERY_KEY = "auth";
+
 export default useAuth;

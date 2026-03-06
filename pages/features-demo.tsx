@@ -1,6 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import { SectionHeader } from '../components/SectionHeader';
+import SectionHeader from '../components/SectionHeader';
 import { InteractiveTimeline } from '../components/InteractiveTimeline';
 import { ProgramComparison } from '../components/ProgramComparison';
 import { AlumniSuccessHub } from '../components/AlumniSuccessHub';

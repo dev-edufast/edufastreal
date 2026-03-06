@@ -1,6 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import { SectionHeader } from '../components/SectionHeader';
+import SectionHeader from '../components/SectionHeader';
 import { LeadMagnet } from '../components/LeadMagnet';
 import { useLeadMagnets } from '../helpers/useLeadMagnets';
 import { Skeleton } from '../components/Skeleton';

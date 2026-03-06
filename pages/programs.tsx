@@ -10,7 +10,7 @@ import { Button } from '../components/Button';
 import { Badge } from '../components/Badge';
 import { AccreditationDisplay } from '../components/AccreditationDisplay';
 import { EnhancedCTA } from '../components/EnhancedCTA';
-import { SectionHeader } from '../components/SectionHeader';
+import SectionHeader from '../components/SectionHeader';
 import { ProgramComparison } from '../components/ProgramComparison';
 import { ProgressIndicator } from '../components/ProgressIndicator';
 import { InstantBooking } from '../components/InstantBooking';
@@ -95,8 +95,16 @@ const ProgramsPage: React.FC = () => {
 
   // Generate structured data for programs and reviews
   const programSchemas = filteredPrograms?.map(program => createCourseSchema(program)) || [];
-  const reviewSchemas = testimonials ? createReviewSchema(testimonials) : [];
-  const aggregateRating = testimonials ? createAggregateRatingSchema(testimonials) : null;
+  const reviewSchemas = testimonials ? createReviewSchema(testimonials.map(t => ({
+    author: t.author ?? t.name ?? 'Anonymous',
+    reviewBody: t.reviewBody ?? t.quote ?? '',
+    ratingValue: t.ratingValue ?? 5,
+    datePublished: new Date().toISOString(),
+  }))) : [];
+  const aggregateRating = testimonials ? createAggregateRatingSchema({
+    ratingValue: testimonials.reduce((acc, t) => acc + (t.ratingValue ?? 5), 0) / testimonials.length,
+    reviewCount: testimonials.length,
+  }) : null;
 
   const handleBrochureClick = (program: Program) => {
     setLeadModalInitialProgram(program.title);

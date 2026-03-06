@@ -6,7 +6,11 @@ import {
   PlayCircle,
   Shuffle,
   BookOpen,
-  Sparkles
+  Sparkles,
+  Users,
+  TrendingUp,
+  Building2,
+  Award
 } from 'lucide-react';
 import { useTestimonials } from '../helpers/useTestimonials';
 import { Button } from '../components/Button';
@@ -61,12 +65,32 @@ const videoTestimonials = [
   }
 ];
 
-const successMetrics = {
-  graduatesPlaced: 2847,
-  averageSalaryIncrease: 68,
-  companiesHiring: 450,
-  successRate: 94,
-};
+const successMetrics = [
+  {
+    icon: Users,
+    value: "2,847",
+    label: "Graduates Placed",
+    change: "This year alone",
+  },
+  {
+    icon: TrendingUp,
+    value: "68%",
+    label: "Average Salary Increase",
+    change: "Within 6 months",
+  },
+  {
+    icon: Building2,
+    value: "450+",
+    label: "Companies Hiring",
+    change: "Active partnerships",
+  },
+  {
+    icon: Award,
+    value: "94%",
+    label: "Success Rate",
+    change: "Career transformation",
+  },
+];
 
 const inspirationalStories = [
   {
@@ -374,7 +398,7 @@ const SuccessStoriesPage: React.FC = () => {
                 isBookmarked={bookmarkedStories.has(story.id)}
                 isHighlighted={showRandomStory === story.id}
                 animationDelay={`${index * 0.1}s`}
-                onToggleExpand={(storyId) => setExpandedStory(expandedStory === storyId ? null : storyId)}
+                onToggleExpand={(storyId) => setExpandedStory(expandedStory === storyId ? null : storyId as number)}
                 onToggleBookmark={toggleBookmark}
                 onShare={shareStory}
               />
