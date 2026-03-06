@@ -5,10 +5,10 @@ export interface BlogPost {
   excerpt: string;
   content: string;
   author: string;
-  date: string;
-  readTime: string;
+  publicationDate: string;
+  readingTime: string;
   category: string;
-  image?: string;
+  imageUrl: string;
   tags: string[];
 }
 
@@ -34,9 +34,10 @@ export const blogPosts: BlogPost[] = [
       <p>At Edufast, we've designed our programs to maximize learning efficiency without compromising on quality. Our hybrid learning model combines online flexibility with in-person support, ensuring students get the best of both worlds.</p>
     `,
     author: "Dr. Sarah Johnson",
-    date: "2024-01-15",
-    readTime: "5 min",
+    publicationDate: "2024-01-15",
+    readingTime: "5",
     category: "Education",
+    imageUrl: "/images/blog/accelerated-degree.jpg",
     tags: ["accelerated learning", "higher education", "career development"]
   },
   {
@@ -57,9 +58,10 @@ export const blogPosts: BlogPost[] = [
       <p>Identify skill gaps and create a learning plan. This might include formal education, online courses, or self-study.</p>
     `,
     author: "Michael Chen",
-    date: "2024-01-10",
-    readTime: "8 min",
+    publicationDate: "2024-01-10",
+    readingTime: "8",
     category: "Career",
+    imageUrl: "/images/blog/career-change.jpg",
     tags: ["career change", "professional development", "job search"]
   },
   {
@@ -80,9 +82,10 @@ export const blogPosts: BlogPost[] = [
       <p>Engage with instructors and fellow students through forums, video calls, and group projects.</p>
     `,
     author: "Emily Rodriguez",
-    date: "2024-01-05",
-    readTime: "6 min",
+    publicationDate: "2024-01-05",
+    readingTime: "6",
     category: "Learning",
+    imageUrl: "/images/blog/online-learning.jpg",
     tags: ["online learning", "study tips", "productivity"]
   }
 ];
