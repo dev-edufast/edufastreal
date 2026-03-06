@@ -4,14 +4,15 @@ import superjson from 'superjson';
 
 export async function handle(request: Request) {
   try {
-    const testimonials = await db
+    const testimonialsRaw = await db
       .selectFrom('testimonials')
       .selectAll()
       .where('isFeatured', '=', true)
       .orderBy('createdAt', 'desc')
       .execute();
+    const testimonials = testimonialsRaw as OutputType;
 
-    return new Response(superjson.stringify(testimonials satisfies OutputType), {
+    return new Response(superjson.stringify(testimonials), {
       headers: { 'Content-Type': 'application/json' },
     });
   } catch (error) {

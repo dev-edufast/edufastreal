@@ -92,14 +92,14 @@ import PageLayout_43 from "./pages/freelancer-dashboard.students.$studentId.edit
 
 if (!window.requestIdleCallback) {
   window.requestIdleCallback = (cb) => {
-    setTimeout(cb, 1);
+    return window.setTimeout(() => cb({} as IdleDeadline), 1);
   };
 }
 
 import "./base.css";
 
 const fileNameToRoute = new Map([["./pages/blog.tsx","/blog"],["./pages/faqs.tsx","/faqs"],["./pages/about.tsx","/about"],["./pages/admin.tsx","/admin"],["./pages/login.tsx","/login"],["./pages/_index.tsx","/"],["./pages/contact.tsx","/contact"],["./pages/faculty.tsx","/faculty"],["./pages/programs.tsx","/programs"],["./pages/apply-now.tsx","/apply-now"],["./pages/resources.tsx","/resources"],["./pages/e-learning.tsx","/e-learning"],["./pages/admin-login.tsx","/admin-login"],["./pages/admin.leads.tsx","/admin/leads"],["./pages/admin.users.tsx","/admin/users"],["./pages/how-it-works.tsx","/how-it-works"],["./pages/universities.tsx","/universities"],["./pages/admin.courses.tsx","/admin/courses"],["./pages/features-demo.tsx","/features-demo"],["./pages/refund-policy.tsx","/refund-policy"],["./pages/admin.programs.tsx","/admin/programs"],["./pages/blog.$blogSlug.tsx","/blog/:blogSlug"],["./pages/privacy-policy.tsx","/privacy-policy"],["./pages/admin.analytics.tsx","/admin/analytics"],["./pages/admin.dashboard.tsx","/admin/dashboard"],["./pages/book-counseling.tsx","/book-counseling"],["./pages/forgot-password.tsx","/forgot-password"],["./pages/success-stories.tsx","/success-stories"],["./pages/compare-programs.tsx","/compare-programs"],["./pages/student-verifier.tsx","/student-verifier"],["./pages/check-eligibility.tsx","/check-eligibility"],["./pages/student-dashboard.tsx","/student-dashboard"],["./pages/video-verification.tsx","/video-verification"],["./pages/admin.registrations.tsx","/admin/registrations"],["./pages/courses.$courseSlug.tsx","/courses/:courseSlug"],["./pages/freelancer-dashboard.tsx","/freelancer-dashboard"],["./pages/terms-and-conditions.tsx","/terms-and-conditions"],["./pages/admin.counseling-bookings.tsx","/admin/counseling-bookings"],["./pages/student-dashboard.settings.tsx","/student-dashboard/settings"],["./pages/e-learning.course.$courseId.tsx","/e-learning/course/:courseId"],["./pages/universities.$universitySlug.tsx","/universities/:universitySlug"],["./pages/freelancer-dashboard.students.tsx","/freelancer-dashboard/students"],["./pages/freelancer-dashboard.students.$studentId.tsx","/freelancer-dashboard/students/:studentId"],["./pages/freelancer-dashboard.students.$studentId.edit.tsx","/freelancer-dashboard/students/:studentId/edit"]]);
-const fileNameToComponent = new Map([
+const fileNameToComponent = new Map<string, React.ComponentType<any>>([
     ["./pages/blog.tsx", Page_0],
 ["./pages/faqs.tsx", Page_1],
 ["./pages/about.tsx", Page_2],
@@ -148,6 +148,7 @@ const fileNameToComponent = new Map([
 
 function makePageRoute(filename: string) {
   const Component = fileNameToComponent.get(filename);
+  if (!Component) return null;
   return <Component />;
 }
 
@@ -189,12 +190,13 @@ type LayoutTrieNode = Map<
 >;
 type LayoutTrie = { topLevel: string[]; trie: LayoutTrieNode };
 function buildLayoutTrie(layouts: {
-  [fileName: string]: React.ComponentType<{ children: React.ReactNode }>[];
+  [fileName: string]: React.ComponentType<{ children: React.ReactNode }> | React.ComponentType<{ children: React.ReactNode }>[];
 }): LayoutTrie {
   const result: LayoutTrie = { topLevel: [], trie: new Map() };
   Object.entries(layouts).forEach(([fileName, components]) => {
     let cur: LayoutTrie = result;
-    for (const component of components) {
+    const componentList = Array.isArray(components) ? components : [components];
+    for (const component of componentList) {
       if (!cur.trie.has(component)) {
         cur.trie.set(component, {
           topLevel: [],
