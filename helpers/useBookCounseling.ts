@@ -1,13 +1,13 @@
 import { useState, useCallback } from "react";
 
 interface CounselingFormData {
-  fullName: string;
-  email: string;
-  phone: string;
+  fullName?: string;
+  email?: string;
+  phone?: string;
   interestedProgram?: string;
-  preferredDate: string;
-  preferredTime: string;
-  topics: string[];
+  preferredDate?: string;
+  preferredTime?: string;
+  topics?: string[];
   additionalInfo?: string;
 }
 
