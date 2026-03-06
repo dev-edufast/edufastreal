@@ -194,3 +194,46 @@ export function useAdminPrograms(params: AdminProgramsParams = {}) {
     },
   });
 }
+
+type AdminUsersParams = {
+  page?: number;
+  pageSize?: number;
+  sortBy?: string;
+  sortDirection?: "asc" | "desc";
+  role?: string;
+  status?: string;
+  search?: string;
+};
+
+export function useAdminUsers(params: AdminUsersParams = {}) {
+  const {
+    page = 1,
+    pageSize = 10,
+    sortBy = "createdAt",
+    sortDirection = "desc",
+    role,
+    status,
+    search,
+  } = params;
+
+  return useQuery({
+    queryKey: ["adminUsers", page, pageSize, sortBy, sortDirection, role, status, search],
+    queryFn: async () => {
+      return {
+        page,
+        pageSize,
+        sortBy,
+        sortDirection,
+        role: role ?? null,
+        status: status ?? null,
+        search: search ?? null,
+        total: 0,
+        items: [],
+        totalAdmins: 0,
+        totalSuperAdmins: 0,
+        totalCounselors: 0,
+        totalStudents: 0,
+      };
+    },
+  });
+}
