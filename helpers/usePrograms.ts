@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 
 export interface Program {
   id: string;
+  title: string;
   name: string;
   description: string;
   duration: string;
@@ -26,6 +27,7 @@ export function usePrograms() {
         const mockPrograms: Program[] = [
           {
             id: "bba",
+            title: "Bachelor of Business Administration (BBA)",
             name: "Bachelor of Business Administration (BBA)",
             description: "Comprehensive business administration program",
             duration: "6 months",
@@ -33,6 +35,7 @@ export function usePrograms() {
           },
           {
             id: "bca",
+            title: "Bachelor of Computer Applications (BCA)",
             name: "Bachelor of Computer Applications (BCA)",
             description: "Computer science and applications program",
             duration: "6 months",
@@ -40,6 +43,7 @@ export function usePrograms() {
           },
           {
             id: "mba",
+            title: "Master of Business Administration (MBA)",
             name: "Master of Business Administration (MBA)",
             description: "Advanced business management program",
             duration: "6 months",
@@ -47,6 +51,7 @@ export function usePrograms() {
           },
           {
             id: "mca",
+            title: "Master of Computer Applications (MCA)",
             name: "Master of Computer Applications (MCA)",
             description: "Advanced computer applications program",
             duration: "6 months",

@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useCallback } from "react";
+import { ZodSchema, ZodError } from "zod";
 
 interface FormContextType {
   values: Record<string, any>;
@@ -30,9 +31,10 @@ interface FormProps {
   onSubmit?: (values: Record<string, any>) => void;
   className?: string;
   defaultValues?: Record<string, any>;
+  schema?: ZodSchema<any>;
 }
 
-export function Form({ children, onSubmit, className = "", defaultValues = {} }: FormProps) {
+export function Form({ children, onSubmit, className = "", defaultValues = {}, schema }: FormProps) {
   const [values, setValues] = useState<Record<string, any>>(defaultValues);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [touched, setTouched] = useState<Record<string, boolean>>({});
@@ -63,9 +65,30 @@ export function Form({ children, onSubmit, className = "", defaultValues = {} }:
     [values, setValue, setTouchedField]
   );
 
+  const validate = useCallback(() => {
+    if (!schema) return true;
+    
+    try {
+      schema.parse(values);
+      setErrors({});
+      return true;
+    } catch (error) {
+      if (error instanceof ZodError) {
+        const newErrors: Record<string, string> = {};
+        error.errors.forEach((err) => {
+          if (err.path.length > 0) {
+            newErrors[err.path[0] as string] = err.message;
+          }
+        });
+        setErrors(newErrors);
+      }
+      return false;
+    }
+  }, [schema, values]);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (onSubmit) {
+    if (validate() && onSubmit) {
       onSubmit(values);
     }
   };
@@ -161,11 +184,14 @@ interface UseFormReturn {
     isValid: boolean;
   };
   setValue: (name: string, value: any) => void;
+  setValues: (updater: (prev: Record<string, any>) => Record<string, any>) => void;
   watch: (name: string) => any;
+  values: Record<string, any>;
 }
 
 interface UseFormOptions {
   defaultValues?: Record<string, any>;
+  schema?: ZodSchema<any>;
 }
 
 export function useForm(options: UseFormOptions = {}): UseFormReturn {
@@ -196,6 +222,10 @@ export function useForm(options: UseFormOptions = {}): UseFormReturn {
     setValues((prev) => ({ ...prev, [name]: value }));
   }, []);
 
+  const setValuesUpdater = useCallback((updater: (prev: Record<string, any>) => Record<string, any>) => {
+    setValues((prev) => updater(prev));
+  }, []);
+
   const watch = useCallback(
     (name: string) => values[name],
     [values]
@@ -209,7 +239,9 @@ export function useForm(options: UseFormOptions = {}): UseFormReturn {
       isValid: Object.keys(errors).length === 0,
     },
     setValue,
+    setValues: setValuesUpdater,
     watch,
+    values,
   };
 }
 
