@@ -9,15 +9,15 @@ export interface Program {
 }
 
 export function usePrograms() {
-  const [programs, setPrograms] = useState<Program[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [data, setData] = useState<Program[]>([]);
+  const [isFetching, setIsFetching] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     // Simulate fetching programs
     const fetchPrograms = async () => {
       try {
-        setIsLoading(true);
+        setIsFetching(true);
         // In a real implementation, this would fetch from an API
         // const response = await fetch('/api/programs');
         // const data = await response.json();
@@ -54,12 +54,12 @@ export function usePrograms() {
           }
         ];
         
-        setPrograms(mockPrograms);
+        setData(mockPrograms);
         setError(null);
       } catch (err) {
         setError(err instanceof Error ? err.message : "Failed to fetch programs");
       } finally {
-        setIsLoading(false);
+        setIsFetching(false);
       }
     };
 
@@ -67,8 +67,8 @@ export function usePrograms() {
   }, []);
 
   return {
-    programs,
-    isLoading,
+    data,
+    isFetching,
     error
   };
 }
