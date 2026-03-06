@@ -125,10 +125,11 @@ export function FormField({ name, children, className = "" }: FormFieldProps) {
 interface FormItemProps {
   children: React.ReactNode;
   className?: string;
+  name?: string;
 }
 
-export function FormItem({ children, className = "" }: FormItemProps) {
-  return <div className={`space-y-2 ${className}`}>{children}</div>;
+export function FormItem({ children, className = "", name }: FormItemProps) {
+  return <div className={`space-y-2 ${className}`} data-field-name={name}>{children}</div>;
 }
 
 interface FormLabelProps {
