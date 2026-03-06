@@ -184,7 +184,7 @@ interface UseFormReturn {
     isValid: boolean;
   };
   setValue: (name: string, value: any) => void;
-  setValues: (updater: (prev: Record<string, any>) => Record<string, any>) => void;
+  setValues: (updater: ((prev: Record<string, any>) => Record<string, any>) | Record<string, any>) => void;
   watch: (name: string) => any;
   values: Record<string, any>;
 }
@@ -222,8 +222,12 @@ export function useForm(options: UseFormOptions = {}): UseFormReturn {
     setValues((prev) => ({ ...prev, [name]: value }));
   }, []);
 
-  const setValuesUpdater = useCallback((updater: (prev: Record<string, any>) => Record<string, any>) => {
-    setValues((prev) => updater(prev));
+  const setValuesUpdater = useCallback((updater: ((prev: Record<string, any>) => Record<string, any>) | Record<string, any>) => {
+    if (typeof updater === 'function') {
+      setValues((prev) => updater(prev));
+    } else {
+      setValues(updater);
+    }
   }, []);
 
   const watch = useCallback(
