@@ -1,5 +1,10 @@
 import React, { useState, useEffect, createContext, useContext, ReactNode } from "react";
 
+type AuthState = 
+  | { type: 'loading' }
+  | { type: 'unauthenticated' }
+  | { type: 'authenticated'; user: any };
+
 interface AuthContextType {
   user: any | null;
   isAuthenticated: boolean;
@@ -7,6 +12,7 @@ interface AuthContextType {
   login: (email: string, password: string) => Promise<boolean>;
   logout: () => void;
   hasRole: (role: string) => boolean;
+  authState: AuthState;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -53,6 +59,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     return user?.role === role || user?.role === "superadmin";
   };
 
+  // Compute authState for compatibility
+  const authState: AuthState = isLoading 
+    ? { type: 'loading' }
+    : user 
+      ? { type: 'authenticated', user }
+      : { type: 'unauthenticated' };
+
   return (
     <AuthContext.Provider
       value={{
@@ -62,6 +75,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         login,
         logout,
         hasRole,
+        authState,
       }}
     >
       {children}
