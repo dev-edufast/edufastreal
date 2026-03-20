@@ -5,10 +5,10 @@ import { useForm } from '../components/Form';
 import { z } from 'zod';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { toast } from 'sonner';
-import { schema as profileSchema, postUserProfile } from '../endpoints/user/profile_POST.schema';
-import { schema as passwordSchema, postUserPassword } from '../endpoints/user/password_POST.schema';
-import { getUserPreferences, UserPreferences } from '../endpoints/user/preferences_GET.schema';
-import { postUserPreferences } from '../endpoints/user/preferences_POST.schema';
+import { schema as profileSchema, postUserProfile, ProfileResponse } from '../endpoints/user/profile_POST.schema';
+import { schema as passwordSchema, postUserPassword, PasswordResponse } from '../endpoints/user/password_POST.schema';
+import { getUserPreferences, UserPreferences, PreferencesResponse } from '../endpoints/user/preferences_GET.schema';
+import { postUserPreferences, PreferencesPostResponse } from '../endpoints/user/preferences_POST.schema';
 import { postExportData } from '../endpoints/user/export-data_POST.schema';
 import { Button } from '../components/Button';
 import { Input } from '../components/Input';
@@ -39,13 +39,13 @@ const ProfileSettings: React.FC = () => {
     }
   }, [authState, form.setValues]);
 
-  const mutation = useMutation({
+  const mutation = useMutation<ProfileResponse, Error, z.infer<typeof profileSchema>>({
     mutationFn: postUserProfile,
     onSuccess: (data) => {
-      if ('user' in data) {
+      if (data.success) {
         toast.success('Profile updated successfully!');
-        queryClient.setQueryData(AUTH_QUERY_KEY, data.user);
-      } else {
+        queryClient.setQueryData([AUTH_QUERY_KEY], data.user);
+      } else if ('error' in data) {
         toast.error(data.error || 'Failed to update profile.');
       }
     },

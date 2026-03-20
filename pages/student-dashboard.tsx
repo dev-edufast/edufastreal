@@ -171,7 +171,7 @@ const Announcements: React.FC = () => {
 const Deadlines: React.FC = () => {
   const { data: deadlines, isFetching, error } = useStudentDeadlines();
 
-  const getDaysLeft = (dueDate: Date) => {
+  const getDaysLeft = (dueDate: string) => {
     const today = new Date();
     const due = new Date(dueDate);
     const diffTime = due.getTime() - today.getTime();

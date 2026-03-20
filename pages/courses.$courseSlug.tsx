@@ -38,7 +38,7 @@ export default function CourseDetailPage() {
     );
   }
 
-  const { university, relatedCourses, ...course } = data;
+  const { course, university, relatedCourses } = data;
 
   return (
     <>

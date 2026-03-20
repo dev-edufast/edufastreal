@@ -4,9 +4,10 @@ import superjson from 'superjson';
 
 export async function handle(request: Request) {
   try {
-    const programs = await db.selectFrom('programs').selectAll().orderBy('title', 'asc').execute();
+    const programsRaw = await db.selectFrom('programs').selectAll().orderBy('title', 'asc').execute();
+    const programs = programsRaw as OutputType;
 
-    return new Response(superjson.stringify(programs satisfies OutputType), {
+    return new Response(superjson.stringify(programs), {
       headers: { 'Content-Type': 'application/json' },
     });
   } catch (error) {

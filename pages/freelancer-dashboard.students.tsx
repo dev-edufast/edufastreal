@@ -45,7 +45,7 @@ const FreelancerStudentsPage: React.FC = () => {
       return (
         <div className={styles.formContainer}>
           <FreelancerStudentForm 
-            mode="add" 
+            mode="create" 
             onSuccess={handleBackToList}
             onCancel={handleBackToList}
           />

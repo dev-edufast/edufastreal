@@ -1,8 +1,8 @@
-import React, { useMemo } from 'react';
-import { Helmet } from 'react-helmet';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useMemo, useEffect } from 'react';
+import Head from 'next/head';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { useAuth } from '../helpers/useAuth';
-import { useEffect } from 'react';
 import {
   UsersIcon,
   ClipboardList,
@@ -190,7 +190,7 @@ const DashboardOverview: React.FC = () => {
 
 const AdminDashboardPage: React.FC = () => {
   const { authState } = useAuth();
-  const navigate = useNavigate();
+  const router = useRouter();
 
   // Get current user role
   const userRole = authState.type === 'authenticated' ? authState.user.role : null;
@@ -199,9 +199,9 @@ const AdminDashboardPage: React.FC = () => {
   useEffect(() => {
     if (authState.type === 'authenticated' && userRole === 'super_admin') {
       console.log('Redirecting super admin to super admin dashboard');
-      navigate('/admin/dashboard', { replace: true });
+      router.push('/admin/dashboard');
     }
-  }, [authState.type, userRole, navigate]);
+  }, [authState.type, userRole, router]);
 
   // Determine which tabs should be visible based on role
   const canAccessAdminFeatures = useMemo(() => {
@@ -239,13 +239,13 @@ const AdminDashboardPage: React.FC = () => {
 
   return (
     <>
-      <Helmet>
+      <Head>
         <title>Admin Dashboard - Edufast</title>
         <meta
           name="description"
           content="Comprehensive admin dashboard for managing leads, registrations, programs, and more."
         />
-      </Helmet>
+      </Head>
       <div className={styles.dashboardContainer}>
         <header className={styles.header}>
           <div className={styles.headerContent}>
@@ -257,12 +257,14 @@ const AdminDashboardPage: React.FC = () => {
             </div>
             <div className={styles.headerActions}>
               {isSuperAdmin && (
-                <Button asChild variant="secondary" size="lg" className={styles.analyticsButton}>
-                  <Link to="/admin/analytics">
-                    <TrendingUp size={20} />
-                    View Analytics Dashboard
-                  </Link>
-                </Button>
+                <Link href="/admin/analytics" passHref>
+                  <Button asChild variant="secondary" size="lg" className={styles.analyticsButton}>
+                    <a>
+                      <TrendingUp size={20} />
+                      View Analytics Dashboard
+                    </a>
+                  </Button>
+                </Link>
               )}
               {userRole && (
                 <Badge variant={roleBadgeVariant} size="lg">

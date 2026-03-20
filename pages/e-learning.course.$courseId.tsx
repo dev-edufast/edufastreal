@@ -135,7 +135,7 @@ export default function CourseDetailPage() {
     return <ErrorDisplay type="generic" message={errorMessage} />;
   }
 
-  const enrolledCourse = enrolledCourses?.find(c => c.id === courseId);
+  const enrolledCourse = enrolledCourses?.find(c => c.id === String(courseId));
   const isEnrolled = !!enrolledCourse;
 
   const googleDriveLink = isEnrolled && enrolledCourse?.googleDriveLink ? enrolledCourse.googleDriveLink : previewData.googleDriveLink;
